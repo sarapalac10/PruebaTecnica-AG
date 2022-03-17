@@ -1,0 +1,54 @@
+:root{
+    --black: #020202 ;
+    --white: #FFFFFF;
+    --blueLight: #ADCAD6;
+    --blueMedium: #38618C;
+    --blueDark: #13293D; 
+    --greenMedium: #99C24D;
+    --green: #0E7184;
+    --grey: #565959;
+    --greyLight: #E2DCDE; 
+    --redLight: #E5625E;
+    --red: #C1292E;  
+    --yellow: #FFE74C;
+    --purpleLight: #BCB6FF;
+    --purple: #B3679B; 
+}
+
+html, body{
+    height:100%;
+}
+
+body {
+    font-family: 'Fredoka', sans-serif;
+}
+
+/*Fonts*/
+h1{
+   font-size: 33px
+}
+
+h2{ 
+    font-size: 22px
+}
+
+h3 {
+    font-size: 14px; 
+    font-weight: bold;
+}
+
+p{
+    font-size: 12px;
+}
+
+/*Inicio */
+
+.imagen-inicio{
+    width: 200px;
+    margin: auto;
+}
+
+/*Footer*/
+.link-perfil{
+
+}
