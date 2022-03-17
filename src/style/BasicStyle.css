@@ -42,13 +42,37 @@ p{
 }
 
 /*Inicio */
-
 .imagen-inicio{
     width: 200px;
     margin: auto;
 }
 
-/*Footer*/
-.link-perfil{
+/*Cards*/
+.container{
+    padding-top: 100px;
+    display: flex;
+    padding:0;
+    margin: 0;
+}
 
+.left-content{
+    flex-basis: 50%;
+}
+.right-content{
+    flex-basis: 50%;
+}
+
+.left-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,0.5fr));
+    grid-gap: 3rem;
+}
+
+.poke-title{
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn-group{
+    display: flex;
 }

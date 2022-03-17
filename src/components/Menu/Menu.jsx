@@ -1,42 +1,41 @@
 import React from 'react'
-import { useEffect } from 'react'
 import { useState } from 'react'
-import { getPokemon, getPokemonData, searchPokemon } from '../../api'
-import { ContainerBusqueda, FormBuscarPoke, InputBuscar, MenuContainer } from '../../style/MenuStyle'
-import Pokedex from '../Card/Pokedex'
+import { Link } from 'react-router-dom'
+import { searchPokemon } from '../../api'
+import { ButtonBusqueda, ContainerBusquedaPokemon, ContainerPokedex, ImgPokedex } from '../../style/BusquedaPokemon'
+import { ButtonIrPokedex, ContainerBusqueda, FormBuscarPoke, InputBuscar, MenuContainer } from '../../style/MenuStyle'
+import { CgPokemon } from "react-icons/cg";
 
 const Menu = () => {
   const [search, setSearch] = useState('');
-  const [pokemons, setPokemons] = useState();
+  const [pokemon, setPokemon] = useState();
 
-  const getPokemones = async () => {
-    try{
-      const data = await getPokemon();
-      console.log(data);
-      const promises = data.results.map(async (pokemon) => {
-        return await getPokemonData(pokemon.urlPokemon)
-      })
-      const results = await Promise.all(promises)
-      setPokemons(results)
-    } catch(error){
-      console.log(error)
-    }
-  }
+  // const getPokemones = async () => {
+  //   try{
+  //     const data = await getPokemon();
+  //     console.log(data);
+  //     const promises = data.results.map(async (pokemon) => {
+  //       return await getPokemonData(pokemon.urlPokemon)
+  //     })
+  //     const results = await Promise.all(promises)
+  //     setPokemon(results)
+  //   } catch(error){
+  //     console.log(error)
+  //   }
+  // }
 
-  useEffect(() => {
-    getPokemones();
-  }, [])
+  // useEffect(() => {
+  //   getPokemones();
+  // }, [])
   
-
   const onChange = (e) => {
     setSearch(e.target.value);
   }
-
   const onClick = async (e) => {
     e.preventDefault()
     const data = await searchPokemon(search);
     console.log(data);
-    setPokemons(data)
+    setPokemon(data)
   }
 
   return (
@@ -50,13 +49,30 @@ const Menu = () => {
                       onChange={onChange}
                     />
                 </ContainerBusqueda>
-                  <button onClick={onClick}> Buscar </button>
+                  <ButtonBusqueda onClick={onClick}> Buscar </ButtonBusqueda>
           </FormBuscarPoke>
         </div>
 
-        <div>
-          <Pokedex pokemon={pokemons} />
-        </div>
+    <ContainerBusquedaPokemon>
+      <ContainerPokedex>
+          {pokemon &&
+          <div>
+              <h2>Nombre: {pokemon.name}</h2>
+              <ImgPokedex src={pokemon.sprites.front_default}  alt='' />
+              <div>
+                <h3>Altura: {pokemon.height} ft </h3>
+                <h3>Peso: {pokemon.weight} kg </h3>
+              </div>
+          </div>
+          }
+        </ContainerPokedex>
+    </ContainerBusquedaPokemon>
+
+          <div>
+          <Link to='/cards' >
+                <ButtonIrPokedex> <CgPokemon/>ir a Pokedex</ButtonIrPokedex>{' '}
+            </Link>
+          </div>
 
     </MenuContainer>
   )
