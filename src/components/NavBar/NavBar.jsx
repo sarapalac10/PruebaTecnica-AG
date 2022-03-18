@@ -8,7 +8,7 @@ return (
         <div>
           <ContainerPokedex>
             <TextoNavBar>ELIGE TU POKEMON</TextoNavBar>
-            <TextPodedex>Mi Pokedex ♡ </TextPodedex>
+            {/* <TextPodedex>Mi Pokedex ♡ </TextPodedex> */}
           </ContainerPokedex>
         </div>
     </NavBarcontainer>

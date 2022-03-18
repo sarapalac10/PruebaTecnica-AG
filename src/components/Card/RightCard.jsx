@@ -2,8 +2,8 @@ import React from 'react'
 import { AbilitiesContainer, AbilitiesText, CardPokemonDer, ImgPokedexDer, StateContainer } from '../../style/CardMainStyle'
 
 const RightCard = ({data}) => {
-
   console.log(data)
+
   return (
     <CardPokemonDer>
       {
@@ -46,8 +46,6 @@ const RightCard = ({data}) => {
 
               </div>
             </StateContainer>
-
-            <h2>Evolucion</h2>
 
           </>
         )

@@ -10,24 +10,6 @@ const Menu = () => {
   const [search, setSearch] = useState('');
   const [pokemon, setPokemon] = useState();
 
-  // const getPokemones = async () => {
-  //   try{
-  //     const data = await getPokemon();
-  //     console.log(data);
-  //     const promises = data.results.map(async (pokemon) => {
-  //       return await getPokemonData(pokemon.urlPokemon)
-  //     })
-  //     const results = await Promise.all(promises)
-  //     setPokemon(results)
-  //   } catch(error){
-  //     console.log(error)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getPokemones();
-  // }, [])
-  
   const onChange = (e) => {
     setSearch(e.target.value);
   }

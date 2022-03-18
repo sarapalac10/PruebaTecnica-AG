@@ -5,32 +5,40 @@ export const MainCardContainer = styled.div`
     background-color: var(--greyLight);
     font-family: 'Roboto', sans-serif;
     height:100%;
-    align-items: center;
 `
 export const CardContainerInterno = styled.div`
     margin-top:2rem;
+    flex-direction: column;
     @media only screen and (min-width: 630px) {
         display: flex;
+        flex-direction: row-reverse;
     }
 `
 export const CardPokemonIzq = styled.div`
-    width: 250px;
+    display: flex;
+    align-items: center;
+    margin-left: 15%;
+    width: 230px;
     border-radius: 1rem;
     background-color: var(--purpleLight);
     box-shadow: 0 5px 5px var(--purple);
-    padding: 0  0 0 1.5rem;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
+    padding: 2.5px;
+    @media only screen and (min-width: 630px) {
+        padding: 0  0 0 1.5rem;
+    }
 `
 export const CardPokemonDer = styled.div`
-    width:45%;
     text-align: center;
     color: var(--black);
-    position: fixed;
-    right:0px;
-    border-left: 0;
-    top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    @media only screen and (min-width: 630px) {
+        position: fixed;
+        right:2rem;
+        border-left: 0;
+        top: 100px;
+        width:40%;
+    }
 `
 export const ImgPokedexDer = styled.img`
     height: 100%;
@@ -49,13 +57,20 @@ export const ButtonDirecciones = styled.button`
     background-color: var(--redLight);
 `
 export const AbilitiesText = styled.h3`
-    font-size: 20px;
+    font-size: 15px;
     text-align: center;
     margin: 1rem;
+    @media only screen and (min-width: 630px) {
+        font-size: 20px;
+    }
 `
 export const AbilitiesContainer = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    @media only screen and (min-width: 630px) {
+        display: flex;
+    }
 `
 export const StateContainer = styled.div`
     display: flex;

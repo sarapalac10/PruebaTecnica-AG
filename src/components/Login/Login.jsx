@@ -1,16 +1,20 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { ButtonEnviar, LoginContainer } from '../../style/LoginStyle'
+import LoginRegistro from './LoginRegistro'
 
 const Login = () => {
   return (
-    <div>
-          <div>
+    <LoginContainer>
+        <div>
+            <LoginRegistro />
+            <h2>Puedes iniciar sin registro</h2>
             <Link to='/principalpage'>
-                <Button variant="outline-primary">Click para iniciar</Button>{' '}
+                <ButtonEnviar>Click para iniciar</ButtonEnviar>{' '}
             </Link>
         </div>
-    </div>
+    </LoginContainer>
+
   )
 }
 

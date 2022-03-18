@@ -41,6 +41,10 @@ p{
     font-size: 12px;
 }
 
+a{
+    text-decoration: none;
+}
+
 /*Inicio */
 .imagen-inicio{
     width: 200px;
@@ -48,6 +52,10 @@ p{
 }
 
 /*Cards*/
+.title-card{
+    text-transform: capitalize;
+}
+
 .container{
     padding-top: 100px;
     display: flex;
@@ -74,5 +82,8 @@ p{
 }
 
 .btn-group{
+    width: 50vh;
     display: flex;
+    justify-content: center;
+    align-items: center;
 }

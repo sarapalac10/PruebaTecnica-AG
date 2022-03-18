@@ -39,8 +39,6 @@ const Cards = () => {
         })
     }
 
-    
-
     useEffect(() => {
       pokeFun();
     },[url])
@@ -51,7 +49,12 @@ const Cards = () => {
                 <ButtonInitPage>Click para volver</ButtonInitPage>{' '}
             </Link>
         <CardContainerInterno className="container">
-             <div className="left-content">
+
+        <div className="right-content">
+                <RightCard data={pokeDex} />
+        </div>
+
+            <div className="left-content">
                 <LeftCard pokemon={pokeData} loading={loading} infoPokemon={poke=> setPokeDex(poke)} />
                 <div className='btn-group'>
                     { prevUrl && <ButtonDirecciones onClick={()=>{ 
@@ -66,9 +69,7 @@ const Cards = () => {
                 </div>
             </div> 
 
-            <div className="right-content">
-                <RightCard data={pokeDex} />
-            </div>
+
   
         </CardContainerInterno>
 
