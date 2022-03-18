@@ -42,6 +42,7 @@ const Menu = () => {
               <h2>Nombre: {pokemon.name}</h2>
               <ImgPokedex src={pokemon.sprites.front_default}  alt='' />
               <div>
+                <h3>Características: </h3>
                 <h3>Altura: {pokemon.height} ft </h3>
                 <h3>Peso: {pokemon.weight} kg </h3>
               </div>

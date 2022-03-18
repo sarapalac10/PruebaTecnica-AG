@@ -48,6 +48,7 @@ export const ButtonEnviar = styled.button`
 export const ContainerIconos = styled.div`
     display: flex;
     margin-top: 2rem;
+    justify-content: center;
 `
 export const ImgIconoInicio = styled.img`
     width: 50px;
@@ -63,7 +64,7 @@ export const LoginContainer = styled.div`
     font-size: 1rem;
     margin-right: auto;
     margin-left: auto;
-    background-image: url('https://res.cloudinary.com/sarapalacio01/image/upload/v1647486955/RetoTecnico/animanga-6_316188_upjmca.jpg');  
+    background-image: url('https://res.cloudinary.com/sarapalacio01/image/upload/v1647573191/RetoTecnico/HD-wallpaper-pokemon-pokeball-white-pokemon-gray-grey-simple-white-pokeball_cenkuu.jpg');  
     background-size: cover;
     position: absolute;
     top: 0px;

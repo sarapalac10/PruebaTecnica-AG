@@ -1,30 +1,26 @@
 import React from "react";
-import { Form, Button, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import * as Yup from 'yup'
-import { useFormik } from 'formik'
-import { loginEmailPassword, loginFacebook, loginGoogle } from "../redux/actions/actionLogin";
+import {  loginFacebook, loginGoogle } from "../redux/actions/actionLogin";
 import { useNavigate } from "react-router-dom";
-import { ButtonEnviar, ContainerIconos, FormInicio, FormInputs, ImgIconoInicio, InputInicio } from "../../style/LoginStyle";
+import { ButtonEnviar, ContainerIconos, ImgIconoInicio } from "../../style/LoginStyle";
+import { useState } from "react";
+import Cookies from 'universal-cookie';
+import { useEffect } from "react";
+import axios from "axios";
+import { Container } from "react-bootstrap";
+import { url } from "../../routes/url";
+import { DivProfile } from "../../style/profileStyle";
 
+const cookies = new Cookies();
 const LoginRegistro = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password:''
-    }, 
-    validationSchema: Yup.object({
-      email: Yup.string().required(),
-      password: Yup.string().required('Error')
-    }),
-    onSubmit:({email, password}) => {
-      dispatch(loginEmailPassword(email, password))
-    }
+  const [form, setForm] = useState( {
+    email: '',
+    password: ''
   })
-
+  const dispatch = useDispatch();
+  
   const handleGoogle = () => {
     dispatch(loginGoogle());
     navigate('/principalpage')
@@ -34,35 +30,68 @@ const LoginRegistro = () => {
     navigate('/principalpage')
   };
 
+  const handleChange= e=>{
+    setForm({
+            ...form,
+            [e.target.name]: e.target.value
+    });
+}
+
+  const useIniciarSesion=async()=>{
+    console.log('form', form)
+    await axios.get(url, {params: {email: form.email, password: form.password}})
+    .then(response=>{
+        console.log('response.data', response.data)
+        return response.data;
+    })
+    .then(response=>{
+        if(response.length>0){
+            let respuesta = response[0];
+            console.log('respuesta', respuesta)
+            console.log(respuesta.id);
+            cookies.set('id', respuesta.id, {path: "/"});
+            cookies.set('apellido', respuesta.apellido, {path: "/"});
+            cookies.set('nombre', respuesta.nombre, {path: "/"});
+            cookies.set('email', respuesta.email, {path: "/"});
+            alert("Bienvenido :D ");
+            navigate('/principalpage');
+        }else{
+            alert('El usuario o la contraseña no son correctos');
+        }
+    })
+    .catch(error=>{
+        console.log(error);
+    })
+}
+
+useEffect(() => {
+    if(cookies.get('email')){
+        navigate('/principalpage')
+    }
+})
+
   return (
-    <FormInicio onSubmit={formik.handleSubmit}>
-      <h2>Registro</h2>
-      <FormInputs>
-        <h2>Correo</h2>
-        <InputInicio
-          type="email"
-          placeholder="Enter email"
-          name="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-        />
-      </FormInputs>
 
-      <FormInputs>
-        <h2>Contraseña</h2>
-        <InputInicio
-          type="password"
-          placeholder="Password"
-          autoComplete="true"
-          name="password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-        />
-      </FormInputs>
+  <div className="containerPrincipal-login">
+    <div>
+        <h1>Iniciar Sesión</h1>
+   </div>
 
-      <ButtonEnviar variant="primary" type="submit">
-        Enviar
-      </ButtonEnviar>
+  <DivProfile>
+    <hr/>
+    <div className="form-group">
+        <label  >Email: </label>
+        <br />
+        <input type="text" className="form-control" name="email" onChange={handleChange} placeholder="Ingresa tu email" />
+        <br />
+        <label>Contraseña: </label>
+        <br />
+        <input type="password" className="form-control" name="password" onChange={handleChange} placeholder="Ingresa tu contraseña" />
+        <br />
+        <ButtonEnviar className="btn-login" onClick={useIniciarSesion}>Iniciar Sesión</ButtonEnviar>
+        <h2>¿Aún no tienes una cuenta? <Link to="/form" className='link-form'>Inscribirse</Link></h2>
+    </div>
+  </DivProfile>
 
       <ContainerIconos>
         <Container className="google-btn" onClick={() => handleGoogle()}>
@@ -84,8 +113,8 @@ const LoginRegistro = () => {
           </div>
         </Container>
       </ContainerIconos>
-      {/* <Link to="/registro">Registrarse</Link> */}
-    </FormInicio>
+</div>
+
   );
 };
 

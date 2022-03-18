@@ -87,3 +87,24 @@ a{
     justify-content: center;
     align-items: center;
 }
+
+.input-form{
+    display: flex;
+    background-color: var(--greyLight);
+    padding: 1rem;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.link-form{
+    font-weight: bold;
+    color: var(--redLight);
+}
+
+.form-control{
+    display: flex;
+    background-color: var(--greyLight);
+    padding: 1rem;
+    border-radius: 10px;
+    width: 100%;
+}
